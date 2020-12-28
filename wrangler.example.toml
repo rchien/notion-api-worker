@@ -1,9 +1,17 @@
-name = "notion-cloudflare-worker"
+name = "notion-cloudflare-worker-staging"
 webpack_config = "webpack.config.js"
 type = "webpack"
+# use cloudflare sub-domain without bringing in your own domain
 workers_dev = true
 
 account_id = ""
+# zoneId and route only needed for custom domain
 zone_id = ""
+route = ""
 
-route = "notion-api.splitbee.io/*"
+
+vars = { ENVIRONMENT = "staging" }
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+name = "notion-cloudflare-worker"
